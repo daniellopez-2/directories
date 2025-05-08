@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export const revalidate = 60;
 
 export default async function Page() {
-  const { data: popularPosts } = await getPopularPosts();
+  const popularPosts = (await getPopularPosts())?.data || [];
 
   return (
     <div className="flex mx-auto max-w-4xl min-h-screen w-full md:mt-28 mt-14 px-6 lg:px-0">

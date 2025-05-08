@@ -60,9 +60,15 @@ export default function BoardList({ popularPosts }: BoardListProps) {
       {/* <BoardSearch /> */}
 
       <div className="my-14 space-y-10">
-        {popularPosts.map((post, index) => (
-          <BoardPost key={post.post_id} index={index} {...post} />
-        ))}
+        {popularPosts && popularPosts.length > 0 ? (
+          popularPosts.map((post, index) => (
+            <BoardPost key={post.post_id} index={index} {...post} />
+          ))
+        ) : (
+          <p className="text-center text-muted-foreground">
+            No trending posts found at the moment.
+          </p>
+        )}
       </div>
 
       <CreatePostModal isOpen={isOpen} setIsOpen={setIsOpen} />
